@@ -2,102 +2,171 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- This makes sure the page scales properly on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jana Alhumaid</title>
   <style>
+    /* Make sure padding and borders are included inside width/height */
     * { 
       box-sizing: border-box;
     }
-	
-    body {
-      margin: 0;
-	  font-family: 'Segoe UI', sans-serif;
-      display: flex;
-	  flex-wrap: wrap;
-      min-height: 100vh;
-      color: #333;
 
+    /* Define some colors we’ll use throughout the page */
+    :root { 
+      --bg-color: #f4f6f8;
+      --text-color: #333;
+      --sidebar-color: #8e7cc3;
+      --heading-color: #8e7cc3;
+      --section-bg: white;
     }
 
+    /* Dark mode colors override the light mode ones */
+    body.dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --sidebar-color: #4b3f6b;
+      --heading-color: #d9d2e9;
+      --section-bg: #2a2a2a;
+    }
+
+    /* The whole page’s styles */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;           /* Put sidebar and main content side by side */
+      flex-wrap: wrap;         /* Let them stack on smaller screens */
+      min-height: 100vh;       /* Make sure it fills the screen height */
+    }
+
+    /* Sidebar styles */
     .sidebar {
-      background-color: #8e7cc3;  
-      color: #fff;
-      flex: 1 1 300px;
+      background-color: var(--sidebar-color);
+      color: white;
+      flex: 1 1 300px;         /* Sidebar takes at least 300px, can grow or shrink */
       padding: 40px 20px;
-  
-      /* Centering content */
+
+      /* Center everything vertically and horizontally */
       display: flex;
       flex-direction: column;
-      align-items: center;     /* Horizontal centering */
-      justify-content: center; /* Vertical centering */
-}
+      align-items: center;
+      justify-content: center;
+    }
 
+    /* Sidebar’s main heading */
     .sidebar h1 {
       font-size: 2em;
       margin-bottom: 10px;
     }
 
+    /* Sidebar paragraphs */
     .sidebar p {
       margin: 5px 0;
       font-size: 0.95em;
     }
 
+    /* Main content area */
     .main {
-      background-color: #f4f6f8;
-	  flex: 2 1 500px;
+      background-color: var(--section-bg);
+      flex: 2 1 500px;        /* Take more space than sidebar */
       padding: 40px;
     }
 
+    /* Section titles */
     h2 {
-      border-bottom: 2px solid #d9d2e9;
       padding-bottom: 5px;
       margin-bottom: 15px;
-      color: #8e7cc3;
+      color: var(--heading-color);
+      border-bottom: 2px solid var(--heading-color);
     }
 
+    /* Each section spacing */
     .section {
       margin-bottom: 30px;
     }
 
+    /* Lists */
     ul {
       margin: 10px 0;
       padding-left: 20px;
     }
 
+    /* List items spacing */
     li {
       margin-bottom: 5px;
     }
 
+    /* Special highlighted text */
     .highlight {
       color: #8e7cc3;
       font-weight: bold;
     }
-	
-	/* Mobile styles */
+
+    /* Button to toggle dark/light mode */
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #8e7cc3;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    /* Button hover effect */
+    .toggle-btn:hover {
+      background-color: #a89ccf;
+      transform: scale(1.05);
+    }
+
+    /* Dark mode button colors */
+    body.dark-mode .toggle-btn {
+      background-color: #4b3f6b;
+    }
+
+    body.dark-mode .toggle-btn:hover {
+      background-color: #67589b;
+    }
+
+    /* Responsive adjustments for phones/tablets */
     @media (max-width: 768px) {
       body {
-        flex-direction: column;
+        flex-direction: column; /* Stack sidebar on top of main */
       }
 
       .sidebar, .main {
-        padding: 20px;
+        padding: 20px;         /* Less padding on small screens */
       }
 
       .sidebar h1 {
-        font-size: 1.5em;
+        font-size: 1.5em;      /* Smaller title on mobile */
       }
 
       h2 {
-        font-size: 1.2em;
+        font-size: 1.2em;      /* Smaller section titles */
       }
 
       p, li {
-        font-size: 0.95em;
+        font-size: 0.95em;     /* Comfortable reading size */
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- This button switches between dark and light themes -->
+  <button onclick="document.body.classList.toggle('dark-mode')" class="toggle-btn">
+    🌗 Toggle Dark/Light
+  </button>
+
+  <!-- Sidebar with personal info -->
   <div class="sidebar">
     <h1>Jana Alhumaid</h1>
     <p><strong>Email:</strong> jno55555@gmail.com</p>
@@ -105,6 +174,7 @@
     <p><strong>Location:</strong> Alqassim</p>
   </div>
 
+  <!-- Main content area with CV details -->
   <div class="main">
     <div class="section">
       <h2>Professional Summary</h2>
@@ -134,10 +204,11 @@
     <div class="section">
       <h2>Languages</h2>
       <ul>
-        <li>English </li>
+        <li>English</li>
         <li>Arabic – Native</li>
       </ul>
     </div>
   </div>
+  
 </body>
 </html>
