@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jana Alhumaid</title>
   <style>
+    * { 
+      box-sizing: border-box;
+    }
+	
     body {
       margin: 0;
+	  font-family: 'Segoe UI', sans-serif;
       display: flex;
-      height: 100vh;
+	  flex-wrap: wrap;
+      min-height: 100vh;
       color: #333;
 
     }
 
     .sidebar {
-      background-color: #8e7cc3;
+      background-color: #8e7cc3;  
       color: #fff;
-      width: 30%;
+      flex: 1 1 300px;
       padding: 40px 20px;
+  
+      /* Centering content */
       display: flex;
       flex-direction: column;
-      justify-content: center;
-    }
+      align-items: center;     /* Horizontal centering */
+      justify-content: center; /* Vertical centering */
+}
 
     .sidebar h1 {
       font-size: 2em;
@@ -35,9 +44,8 @@
 
     .main {
       background-color: #f4f6f8;
-      width: 70%;
+	  flex: 2 1 500px;
       padding: 40px;
-      overflow-y: auto;
     }
 
     h2 {
@@ -63,6 +71,29 @@
     .highlight {
       color: #8e7cc3;
       font-weight: bold;
+    }
+	
+	/* Mobile styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar, .main {
+        padding: 20px;
+      }
+
+      .sidebar h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      p, li {
+        font-size: 0.95em;
+      }
     }
   </style>
 </head>
